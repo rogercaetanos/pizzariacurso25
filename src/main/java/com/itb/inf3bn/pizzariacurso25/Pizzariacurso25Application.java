@@ -1,5 +1,4 @@
-package com.itb.inf3bn.pizzariacurso25;
-
+package -
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
