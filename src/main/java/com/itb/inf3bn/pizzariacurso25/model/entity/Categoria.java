@@ -31,4 +31,13 @@ public class Categoria {
     @Transient
     private boolean isValid = true;
 
+    public boolean validarCategoria() {
+
+        if(nome == null || nome.isEmpty()){
+            mensagemErro += "O nome da categoria é obrigatório:";
+            isValid = false;
+        } 
+        return isValid;
+    }
+
 }

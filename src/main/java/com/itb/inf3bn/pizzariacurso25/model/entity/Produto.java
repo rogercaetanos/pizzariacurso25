@@ -39,7 +39,24 @@ public class Produto {
     private boolean isValid = true;
 
 
-    
+    public boolean validarProduto() {
 
+        if(nome == null || nome.isEmpty()){
+            mensagemErro += "O nome do produto é obrigatório:";
+            isValid = false;
+        }
+        if(precoCompra < 0) {
+            precoCompra = 0;
+            mensagemErro += "O preço de compra do produto deve ser maior que zero:";
+            isValid = false;
+        }
+        if(precoVenda < 0) {
+            precoVenda = 0;
+            mensagemErro += "O preço de venda do produto deve ser maior que zero:";
+            isValid = false;
+        }
+
+        return isValid;
+    }
 
 }
