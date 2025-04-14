@@ -68,8 +68,10 @@ public class Produto {
     // Atributos de apoio
 
     @Transient            // Anotação para atributos QUE NÃO REPRESENTAM COLUNAS NO BANCO DE DADOS
+    @JsonIgnore
     private String mensagemErro = "";
     @Transient
+    @JsonIgnore
     private boolean isValid = true;
 
 
