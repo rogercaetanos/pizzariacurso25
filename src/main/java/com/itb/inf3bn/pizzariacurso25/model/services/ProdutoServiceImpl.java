@@ -1,10 +1,12 @@
 package com.itb.inf3bn.pizzariacurso25.model.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.itb.inf3bn.pizzariacurso25.exceptions.BadRequest;
 import com.itb.inf3bn.pizzariacurso25.exceptions.NotFound;
-import com.itb.inf3bn.pizzariacurso25.model.entity.Categoria;
+
 import com.itb.inf3bn.pizzariacurso25.model.entity.Produto;
 import com.itb.inf3bn.pizzariacurso25.model.repository.ProdutoRepository;
 
@@ -47,5 +49,19 @@ public class ProdutoServiceImpl implements ProdutoService {
        return produtoRepository.save(produto);
     }
 
-  
+    @Override
+    public List<Produto> findAll() {
+      
+        return produtoRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public boolean delete(Long id) {  
+       if(!produtoRepository.existsById(id)){
+          throw new NotFound("Não foi encontrado o produto com o id " + id );
+       }
+       produtoRepository.deleteById(id);
+       return true;
+    } 
 }
