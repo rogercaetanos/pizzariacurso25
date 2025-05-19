@@ -30,6 +30,7 @@ public class Categoria {
     private String nome;
     @Column(nullable = true, length = 255)
     private String descricao;
+    @JsonIgnore
     private boolean codStatus;
 
     // Relacionamento entre entidades
@@ -45,8 +46,10 @@ public class Categoria {
      // Atributos de apoio
 
     @Transient
+    @JsonIgnore
     private String mensagemErro = "";
     @Transient
+    @JsonIgnore
     private boolean isValid = true;
 
     public boolean validarCategoria() {

@@ -29,7 +29,7 @@ public class CategoriaServiceImpl implements CategoriaService {
             Categoria categoria = categoriaRepository.findById(id).get();
             return categoria;
         } catch (Exception e) {
-           throw new NotFound("Produto não encontradao com o id " + id);
+           throw new NotFound("Categoria não encontrada com o id " + id);
         }
         
     }

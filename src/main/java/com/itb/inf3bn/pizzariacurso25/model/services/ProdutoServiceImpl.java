@@ -8,6 +8,7 @@ import com.itb.inf3bn.pizzariacurso25.exceptions.BadRequest;
 import com.itb.inf3bn.pizzariacurso25.exceptions.NotFound;
 
 import com.itb.inf3bn.pizzariacurso25.model.entity.Produto;
+import com.itb.inf3bn.pizzariacurso25.model.entity.Categoria;
 import com.itb.inf3bn.pizzariacurso25.model.repository.ProdutoRepository;
 
 import jakarta.transaction.Transactional;
@@ -18,9 +19,11 @@ public class ProdutoServiceImpl implements ProdutoService {
     // final: significa que uma vez atribuído o valor não pode ser alterado
 
     private final ProdutoRepository produtoRepository;
+    private final CategoriaService categoriaService;
 
-    public ProdutoServiceImpl(ProdutoRepository produtoRepository){
+    public ProdutoServiceImpl(ProdutoRepository produtoRepository, CategoriaService categoriaService){
         this.produtoRepository = produtoRepository;
+        this.categoriaService = categoriaService;
     }
 
     @Override
@@ -42,9 +45,8 @@ public class ProdutoServiceImpl implements ProdutoService {
        }
        // É possível salvar o produto sem categoria, pois a chave estrangeira é NULL
        if(produto.getCategoria() != null) {
-        //Categoria categoria = categoriaService.findById(produto.getCategoria().getId());
-        // if(categoria == null) 
-        //   throw new BadRequest("Não foi encontrado a categoria com o id + " + produto.getCategoria().getId());
+        Categoria categoria = categoriaService.findById(produto.getCategoria().getId());
+        produto.setCategoria(categoria);
        }
        return produtoRepository.save(produto);
     }
