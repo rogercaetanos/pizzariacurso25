@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.itb.inf3bn.pizzariacurso25.exceptions.BadRequest;
 import com.itb.inf3bn.pizzariacurso25.model.entity.Produto;
+import com.itb.inf3bn.pizzariacurso25.model.services.CategoriaService;
 import com.itb.inf3bn.pizzariacurso25.model.services.ProdutoService;
 
 @RestController
@@ -22,6 +23,7 @@ import com.itb.inf3bn.pizzariacurso25.model.services.ProdutoService;
 public class FuncionarioController {
 
     private final ProdutoService produtoService;
+    private final CategoriaService categoriaService;
 
     public FuncionarioController(ProdutoService produtoService) {
         this.produtoService = produtoService;
