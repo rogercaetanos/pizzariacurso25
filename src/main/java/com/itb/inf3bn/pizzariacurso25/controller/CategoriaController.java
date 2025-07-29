@@ -18,7 +18,7 @@ import com.itb.inf3bn.pizzariacurso25.model.services.CategoriaService;
 
 
 @RestController
-@RequestMapping("/api/v1/funcionario")
+@RequestMapping("/api/v1/categoria")
 public class CategoriaController {
 
     
